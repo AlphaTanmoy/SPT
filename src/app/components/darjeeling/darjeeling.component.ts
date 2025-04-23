@@ -10,12 +10,17 @@ import { CommonModule } from '@angular/common';
 })
 export class DarjeelingComponent {
   images = [
-    'assets/darjeeling/img1.jpeg',
-    'assets/darjeeling/img2.jpeg',
-    'assets/darjeeling/img1.jpeg',
-    'assets/darjeeling/img2.jpeg',
-    'assets/darjeeling/img1.jpeg',
-    'assets/darjeeling/img2.jpeg'
+    'assets/darjeeling/img1.jpg',
+    'assets/darjeeling/img2.jpg',
+    'assets/darjeeling/img3.jpg',
+    'assets/darjeeling/img4.jpg',
+    'assets/darjeeling/img5.jpg',
+    'assets/darjeeling/img6.jpg',
+    'assets/darjeeling/img7.jpg',
+    'assets/darjeeling/img8.jpg',
+    'assets/darjeeling/img9.jpg',
+    'assets/darjeeling/img10.jpg',
+    'assets/darjeeling/img11.jpg'
   ];
 
   lightboxActive = false;
