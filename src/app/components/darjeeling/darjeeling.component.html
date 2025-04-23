@@ -1,0 +1,31 @@
+<div class="gallery-container">
+  <h2 class="gallery-title">Darjeeling Gallery</h2>
+  <div class="gallery-grid">
+    <div class="gallery-item" *ngFor="let img of images">
+      <div class="image-container">
+        <img [src]="img" class="gallery-image" (click)="openLightbox(img)" />
+        <div class="image-overlay">
+          <button class="zoom-btn" (click)="openLightbox(img); $event.stopPropagation()">
+            <i class="fas fa-search-plus"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lightbox Modal -->
+  <div class="lightbox" *ngIf="lightboxActive" (click)="closeLightbox()">
+    <div class="lightbox-content" (click)="$event.stopPropagation()">
+      <span class="close-btn" (click)="closeLightbox()">&times;</span>
+      <img [src]="selectedImage" class="lightbox-image" />
+      <div class="lightbox-nav">
+        <button class="nav-btn prev-btn" (click)="prevImage(); $event.stopPropagation()">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="nav-btn next-btn" (click)="nextImage(); $event.stopPropagation()">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
