@@ -16,7 +16,9 @@
 
 .nav-link:hover,
 .nav-link.active {
-  color: #00ccff; /* Bootstrap Warning color */
+  color: #00ccff;
+  transform: scale(1.2);
+  transition: transform 0.3s ease, filter 0.3s ease;
 }
 
 .navbar-brand {
