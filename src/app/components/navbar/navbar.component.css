@@ -1,0 +1,33 @@
+.logo {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.navbar {
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+}
+
+.nav-link {
+  margin: 0 10px;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: #00ccff; /* Bootstrap Warning color */
+}
+
+.navbar-brand {
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.navbar-toggler {
+  border: none;
+}
+
+.navbar-toggler:focus {
+  box-shadow: none;
+}
