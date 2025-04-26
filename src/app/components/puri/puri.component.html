@@ -1,1 +1,53 @@
-<p>puri works!</p>
+<div class="gallery-container">
+  <h2 class="gallery-title">Puri Gallery</h2>
+  <div class="gallery-grid">
+    <div class="gallery-item" *ngFor="let img of images" [class.portrait]="isPortrait(img)">
+      <div class="image-container">
+        <img [src]="img" class="gallery-image" (click)="openLightbox(img)" (load)="onImageLoad(img, $event)" />
+        <div class="image-overlay">
+          <button class="zoom-btn" (click)="openLightbox(img); $event.stopPropagation()">
+            <i class="material-icons">zoom_in</i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="lightbox" *ngIf="lightboxActive" (click)="closeLightbox()">
+    <div class="lightbox-content" (click)="$event.stopPropagation()">
+      <span class="close-btn" (click)="closeLightbox()">&times;</span>
+
+      <div class="image-viewport" (mousedown)="onMouseDown($event)" (mousemove)="onMouseMove($event)"
+        (mouseup)="onMouseUp()" (mouseleave)="onMouseLeave()" (touchstart)="onTouchStart($event)"
+        (touchmove)="onTouchMove($event)" (touchend)="onTouchEnd()">
+        <img [src]="selectedImage" class="lightbox-image"
+          [style.transform]="'scale(' + scale + ') translate(' + translateX + 'px, ' + translateY + 'px)'"
+          [style.cursor]="scale > 1 ? (isDragging ? 'grabbing' : 'grab') : 'default'" />
+      </div>
+
+      <div class="lightbox-nav">
+        <button class="nav-btn prev-btn" (click)="prevImage(); $event.stopPropagation()" *ngIf="scale <= 1">
+          <i class="material-icons">chevron_left</i>
+        </button>
+        <button class="nav-btn next-btn" (click)="nextImage(); $event.stopPropagation()" *ngIf="scale <= 1">
+          <i class="material-icons">chevron_right</i>
+        </button>
+      </div>
+
+      <div class="zoom-controls">
+        <button class="zoom-btn" (click)="zoomIn(); $event.stopPropagation()">
+          <i class="material-icons">zoom_in</i>
+        </button>
+        <button class="zoom-btn" (click)="zoomOut(); $event.stopPropagation()">
+          <i class="material-icons">zoom_out</i>
+        </button>
+        <button class="zoom-btn" (click)="resetZoom(); $event.stopPropagation()" *ngIf="scale !== 1">
+          <i class="material-icons">fullscreen_exit</i>
+        </button>
+      </div>
+
+      <div class="image-counter" *ngIf="scale <= 1">
+        {{ currentIndex + 1 }} / {{ images.length }}
+      </div>
+    </div>
+  </div>
+</div>
